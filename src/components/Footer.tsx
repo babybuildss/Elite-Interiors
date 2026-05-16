@@ -1,32 +1,49 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const footerLinks = {
   services: [
-    { label: 'Residential Design', href: '#services' },
-    { label: 'Commercial Design', href: '#services' },
-    { label: 'Hospitality Design', href: '#services' },
-    { label: 'Luxury Renovation', href: '#services' },
+    { label: 'Residential Design', href: '/services' },
+    { label: 'Commercial Design', href: '/services' },
+    { label: 'Hospitality Design', href: '/services' },
+    { label: 'Luxury Renovation', href: '/services' },
   ],
   company: [
-    { label: 'About Us', href: '#about' },
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Our Process', href: '#services' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Services', href: '/services' },
+    { label: 'Contact', href: '/contact' },
   ],
 };
 
 export default function Footer() {
-  const scrollToSection = (href: string) => {
-    const id = href.replace('#', '');
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <footer className="relative border-t border-[#C9A96E]/10 bg-[#0a0a0a]">
+      {/* CTA Banner */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div className="relative -mt-16 glass-card p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 mb-16 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#C9A96E]/5 to-transparent" />
+          <div className="relative z-10">
+            <h3 className="font-[family-name:var(--font-playfair)] text-white text-2xl md:text-3xl mb-2">
+              Ready to Transform Your Space?
+            </h3>
+            <p className="font-[family-name:var(--font-cormorant)] text-white/50 text-lg">
+              Let&apos;s create something extraordinary together. Your dream space awaits.
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="relative z-10 magnetic-btn px-10 py-4 bg-gradient-to-r from-[#C9A96E] to-[#A07D44] text-[#0a0a0a] text-xs tracking-[0.25em] uppercase font-semibold hover:shadow-[0_0_40px_rgba(201,169,110,0.3)] transition-all duration-500 cursor-hover whitespace-nowrap"
+          >
+            Start Your Project
+          </Link>
+        </div>
+      </div>
+
       {/* Main footer */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
@@ -47,11 +64,9 @@ export default function Footer() {
             </div>
             <p className="font-[family-name:var(--font-cormorant)] text-white/40 text-lg leading-relaxed max-w-md mb-8">
               Where vision meets elegance. Crafting extraordinary living spaces that
-              redefine luxury and transcend the ordinary.
+              redefine luxury and transcend the ordinary since 2012.
             </p>
-
-            {/* Newsletter */}
-            <div className="flex gap-0 max-w-sm">
+            <div className="flex gap-3 max-w-sm">
               <input
                 type="email"
                 placeholder="Your email"
@@ -71,16 +86,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
                     className="font-[family-name:var(--font-cormorant)] text-white/30 text-base hover:text-[#C9A96E] transition-colors duration-300 smooth-underline cursor-hover"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -94,19 +105,26 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
                     className="font-[family-name:var(--font-cormorant)] text-white/30 text-base hover:text-[#C9A96E] transition-colors duration-300 smooth-underline cursor-hover"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
+            <div className="mt-6 flex gap-3">
+              {['IG', 'PI', 'LI', 'HZ'].map((social) => (
+                <a
+                  key={social}
+                  href="#"
+                  className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/30 text-xs hover:border-[#C9A96E]/40 hover:text-[#C9A96E] transition-all duration-300 cursor-hover"
+                >
+                  {social}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -115,20 +133,17 @@ export default function Footer() {
           <p className="font-[family-name:var(--font-inter)] text-white/20 text-xs tracking-[0.15em]">
             &copy; 2024 Elite Interiors. All rights reserved.
           </p>
-
           <div className="flex items-center gap-6">
-            {['Instagram', 'Pinterest', 'LinkedIn', 'Houzz'].map((social) => (
+            {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((item) => (
               <a
-                key={social}
+                key={item}
                 href="#"
-                className="font-[family-name:var(--font-inter)] text-white/20 text-[10px] tracking-[0.15em] uppercase hover:text-[#C9A96E] transition-colors duration-300 cursor-hover"
+                className="font-[family-name:var(--font-inter)] text-white/20 text-[10px] tracking-[0.1em] uppercase hover:text-[#C9A96E] transition-colors duration-300 cursor-hover"
               >
-                {social}
+                {item}
               </a>
             ))}
           </div>
-
-          {/* Back to top */}
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-2 text-[#C9A96E]/40 hover:text-[#C9A96E] transition-colors duration-300 cursor-hover"

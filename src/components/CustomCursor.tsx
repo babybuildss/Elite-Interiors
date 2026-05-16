@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -10,19 +9,20 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Skip on touch devices
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
     };
-
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    // Check for hoverable elements
-    const handleHoverCheck = () => {
-      const hoverables = document.querySelectorAll('a, button, [data-cursor-hover], .cursor-hover');
+    const setupHoverListeners = () => {
+      const hoverables = document.querySelectorAll('a, button, [data-cursor-hover], input, select, textarea');
       hoverables.forEach((el) => {
         el.addEventListener('mouseenter', () => setIsHovering(true));
         el.addEventListener('mouseleave', () => setIsHovering(false));
@@ -35,10 +35,8 @@ export default function CustomCursor() {
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
-    // Run hover check after a delay to let components mount
-    const timer = setTimeout(handleHoverCheck, 1000);
-    // Re-run periodically for dynamic content
-    const interval = setInterval(handleHoverCheck, 3000);
+    setupHoverListeners();
+    const interval = setInterval(setupHoverListeners, 3000);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -46,7 +44,6 @@ export default function CustomCursor() {
       window.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
-      clearTimeout(timer);
       clearInterval(interval);
     };
   }, []);
@@ -57,36 +54,24 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Outer ring */}
-      <motion.div
-        className="fixed top-0 left-0 w-10 h-10 rounded-full border border-[#C9A96E]/40 pointer-events-none z-[9998] mix-blend-difference"
-        animate={{
-          x: position.x - 20,
-          y: position.y - 20,
-          scale: isHovering ? 1.8 : isClicking ? 0.8 : 1,
+      <div
+        className="fixed top-0 left-0 pointer-events-none z-[9998] mix-blend-difference transition-[width,height] duration-300"
+        style={{
+          width: isHovering ? 60 : 40,
+          height: isHovering ? 60 : 40,
+          borderRadius: '50%',
+          border: '1px solid rgba(201, 169, 110, 0.4)',
+          transform: `translate(${position.x - (isHovering ? 30 : 20)}px, ${position.y - (isHovering ? 30 : 20)}px) scale(${isClicking ? 0.8 : 1})`,
           opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 150,
-          damping: 15,
-          mass: 0.5,
+          transition: 'transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s',
         }}
       />
-      {/* Inner dot */}
-      <motion.div
+      <div
         className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-[#C9A96E] pointer-events-none z-[9998]"
-        animate={{
-          x: position.x - 3,
-          y: position.y - 3,
-          scale: isClicking ? 2 : 1,
+        style={{
+          transform: `translate(${position.x - 3}px, ${position.y - 3}px) scale(${isClicking ? 2 : 1})`,
           opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 500,
-          damping: 28,
-          mass: 0.3,
+          transition: 'transform 0.08s ease-out, opacity 0.3s',
         }}
       />
     </>
