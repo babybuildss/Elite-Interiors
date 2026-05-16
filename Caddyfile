@@ -13,11 +13,8 @@
 	}
 
 	handle {
-		reverse_proxy localhost:3000 {
-			header_up Host {host}
-			header_up X-Forwarded-For {remote_host}
-			header_up X-Forwarded-Proto {scheme}
-			header_up X-Real-IP {remote_host}
-		}
+		root * /home/z/my-project/elite-interiors/dist
+		try_files {path} /index.html
+		file_server
 	}
 }
