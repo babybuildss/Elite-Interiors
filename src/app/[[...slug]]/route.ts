@@ -1,30 +1,28 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
 import { NextResponse } from "next/server";
 
-const DIST_DIR = join(process.cwd(), "elite-interiors", "dist");
-
-// Cache the HTML content in memory for performance
-let cachedHtml: string | null = null;
-
-async function getIndexHtml(): Promise<string> {
-  if (cachedHtml) return cachedHtml;
-  const html = await readFile(join(DIST_DIR, "index.html"), "utf-8");
-  cachedHtml = html;
-  return html;
-}
+const HTML = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Interiors | Luxury Interior Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" crossorigin href="/assets/index-_R7JU7Sd.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" crossorigin src="/assets/index-51iZvYpK.js"></script>
+  </body>
+</html>`;
 
 export async function GET() {
-  try {
-    const html = await getIndexHtml();
-    return new NextResponse(html, {
-      status: 200,
-      headers: {
-        "Content-Type": "text/html; charset=utf-8",
-        "Cache-Control": "public, max-age=0, must-revalidate",
-      },
-    });
-  } catch {
-    return new NextResponse("Not Found", { status: 404 });
-  }
+  return new NextResponse(HTML, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+    },
+  });
 }
