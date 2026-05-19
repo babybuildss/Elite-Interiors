@@ -131,7 +131,15 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-[family-name:var(--font-inter)] text-white/20 text-xs tracking-[0.15em]">
-            &copy; 2024 Elite Interiors. All rights reserved.
+            &copy; 2024 Elite Interiors. All rights reserved. Made with <span className="text-[#C9A96E]">💝</span>by{' '}
+            <a
+              href="https://chaicodestudio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/20 hover:text-[#C9A96E] transition-colors duration-300"
+            >
+              ChaiCodeStudio
+            </a>
           </p>
           <div className="flex items-center gap-6">
             {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((item) => (

@@ -109,7 +109,12 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-gold/10 py-6 px-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-white/30 text-xs font-inter tracking-wider">
-          <span>&copy; {currentYear} Elite Interiors. All Rights Reserved.</span>
+          <span>
+            &copy; {currentYear} Elite Interiors. All Rights Reserved. Made with <span className="text-gold">💝</span> by{' '}
+            <a href="https://chaicodestudio.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+              ChaiCodeStudio
+            </a>
+          </span>
           <div className="flex gap-6">
             <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-gold transition-colors">Terms of Service</a>
