@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -16,32 +16,32 @@ const heroStats = [
 
 const whyChooseUs = [
   {
-    icon: 'Γùå',
+    icon: '◆',
     title: 'Bespoke Design',
-    desc: 'Every project is a unique masterpiece tailored to your personality, lifestyle, and aspirations. No templates, no repetitions ΓÇö only original artistry.',
+    desc: 'Every project is a unique masterpiece tailored to your personality, lifestyle, and aspirations. No templates, no repetitions — only original artistry.',
   },
   {
-    icon: 'Γùç',
+    icon: '◇',
     title: 'Premium Materials',
-    desc: 'We source the finest materials from across the globe ΓÇö Italian marble, Swiss hardware, German fittings, and handcrafted Indian artisan pieces.',
+    desc: 'We source the finest materials from across the globe — Italian marble, Swiss hardware, German fittings, and handcrafted Indian artisan pieces.',
   },
   {
-    icon: 'Γùï',
+    icon: '○',
     title: 'On-Time Delivery',
     desc: 'Our military-grade project management ensures your space is delivered on schedule, every single time. No excuses, no delays, only results.',
   },
   {
-    icon: 'Γûí',
+    icon: '□',
     title: 'Award-Winning Team',
     desc: 'Our designers have been recognized by India\'s top design institutions and international bodies. Your project is in the best hands in the industry.',
   },
   {
-    icon: 'Γû│',
+    icon: '△',
     title: '10-Year Warranty',
     desc: 'We stand behind every detail with a comprehensive 10-year warranty. Our commitment to quality extends far beyond the handover day.',
   },
   {
-    icon: 'Γÿå',
+    icon: '☆',
     title: 'Smart Integration',
     desc: 'Seamlessly blend luxury with technology. Smart lighting, automated climate control, and voice-activated systems integrated invisibly into your space.',
   },
@@ -76,7 +76,7 @@ const featuredProjects = [
     image: '/images/portfolio-living.png',
   },
   {
-    title: 'Caf├⌐ Lumi├¿re',
+    title: 'Café Lumière',
     location: 'Delhi',
     category: 'Hospitality',
     image: '/images/portfolio-dining.png',
@@ -91,7 +91,7 @@ const featuredProjects = [
 
 const testimonials = [
   {
-    quote: 'Elite Interiors didn\'t just design our home ΓÇö they translated our dreams into reality. Every corner whispers luxury, every room tells our story.',
+    quote: 'Elite Interiors didn\'t just design our home — they translated our dreams into reality. Every corner whispers luxury, every room tells our story.',
     name: 'Rajesh Sharma',
     title: 'CEO, Meridian Group',
     initials: 'RS',
@@ -222,7 +222,7 @@ export default function HomePage() {
               The Elite <span className="text-gradient-gold italic">Difference</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="font-[family-name:var(--font-cormorant)] text-white/40 text-lg max-w-2xl mb-16">
-              What sets us apart isn&apos;t just what we design ΓÇö it&apos;s how we think, how we craft,
+              What sets us apart isn&apos;t just what we design — it&apos;s how we think, how we craft,
               and how we obsess over every detail that others would overlook.
             </motion.p>
 
@@ -260,7 +260,7 @@ export default function HomePage() {
               </motion.h2>
               <motion.div variants={fadeUp}>
                 <Link href="/services" className="inline-flex items-center gap-3 text-[#C9A96E] text-xs tracking-[0.2em] uppercase cursor-hover group">
-                  View All Services <span className="group-hover:translate-x-2 transition-transform duration-300">ΓåÆ</span>
+                  View All Services <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
                 </Link>
               </motion.div>
             </div>
@@ -301,7 +301,7 @@ export default function HomePage() {
               </motion.h2>
               <motion.div variants={fadeUp}>
                 <Link href="/portfolio" className="inline-flex items-center gap-3 text-[#C9A96E] text-xs tracking-[0.2em] uppercase cursor-hover group">
-                  View All Projects <span className="group-hover:translate-x-2 transition-transform duration-300">ΓåÆ</span>
+                  View All Projects <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
                 </Link>
               </motion.div>
             </div>
@@ -351,7 +351,7 @@ export default function HomePage() {
                   <div className="absolute top-4 right-6 font-[family-name:var(--font-playfair)] text-5xl text-[#C9A96E]/10">&ldquo;</div>
                   <div className="flex items-center gap-1 mb-6">
                     {[...Array(5)].map((_, j) => (
-                      <span key={j} className="text-[#C9A96E] text-sm">Γÿà</span>
+                      <span key={j} className="text-[#C9A96E] text-sm">★</span>
                     ))}
                   </div>
                   <p className="font-[family-name:var(--font-cormorant)] text-white/60 text-lg leading-relaxed mb-8 italic">{t.quote}</p>
