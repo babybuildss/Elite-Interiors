@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "cd elite-interiors && npm install && npm run build && cd .. && mkdir -p public/assets public/images && cp elite-interiors/dist/assets/* public/assets/ 2>/dev/null; cp elite-interiors/dist/images/* public/images/ 2>/dev/null; cp elite-interiors/dist/favicon.svg public/ 2>/dev/null; next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
+    "build": "next build",
     "start": "NODE_OPTIONS=\"--max-old-space-size=256\" node .next/standalone/server.js",
     "lint": "eslint .",
     "db:push": "prisma db push",
