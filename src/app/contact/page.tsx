@@ -2,8 +2,6 @@
 
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import SiteLayout from '@/components/SiteLayout';
-
 const offices = [
   {
     city: 'Mumbai',
@@ -81,7 +79,7 @@ export default function ContactPage() {
   };
 
   return (
-    <SiteLayout>
+    <>
       {/* ===== HERO ===== */}
       <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
@@ -313,6 +311,6 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
-    </SiteLayout>
+    </>
   );
 }

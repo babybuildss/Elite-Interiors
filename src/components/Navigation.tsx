@@ -24,12 +24,9 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change via event listener pattern
   useEffect(() => {
-    const handleRouteChange = () => setIsOpen(false);
-    window.addEventListener('routeChangeComplete', handleRouteChange);
-    return () => window.removeEventListener('routeChangeComplete', handleRouteChange);
-  }, []);
+    setIsOpen(false);
+  }, [pathname]);
 
   const isActive = useCallback(
     (href: string) => {

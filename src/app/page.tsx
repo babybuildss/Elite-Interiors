@@ -1,10 +1,8 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import SiteLayout from '@/components/SiteLayout';
-
 /* ------------------------------------------------------------------ */
 /*  DATA                                                               */
 /* ------------------------------------------------------------------ */
@@ -148,7 +146,7 @@ export default function HomePage() {
   };
 
   return (
-    <SiteLayout>
+    <>
       {/* ===== HERO ===== */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <motion.div className="absolute inset-0 z-0" style={{ y: heroY, scale: heroScale }}>
@@ -397,6 +395,6 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
       </section>
-    </SiteLayout>
+    </>
   );
 }

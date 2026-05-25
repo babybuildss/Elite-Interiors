@@ -3,8 +3,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import SiteLayout from '@/components/SiteLayout';
-
 const projects = [
   { id: 1, title: 'The Sapphire Penthouse', category: 'Residential', location: 'Mumbai', year: '2024', area: '5,000 sq ft', image: '/images/portfolio-living.png', description: 'A penthouse reimagined with bespoke Italian marble, custom millwork, and panoramic views of the Arabian Sea. Every room tells a story of opulence and refined taste.' },
   { id: 2, title: 'Caf├⌐ Lumi├¿re', category: 'Hospitality', location: 'Delhi', year: '2024', area: '3,200 sq ft', image: '/images/portfolio-dining.png', description: 'An immersive dining experience where Art Deco elegance meets contemporary Indian artistry. The space features hand-painted murals and custom brass lighting fixtures.' },
@@ -45,7 +43,7 @@ export default function PortfolioPage() {
   const filteredProjects = activeCategory === 'All' ? projects : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <SiteLayout>
+    <>
       {/* ===== HERO ===== */}
       <section ref={heroRef} className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
@@ -219,6 +217,6 @@ export default function PortfolioPage() {
           </motion.div>
         </motion.div>
       </section>
-    </SiteLayout>
+    </>
   );
 }

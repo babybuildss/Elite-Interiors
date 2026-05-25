@@ -2,8 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import SiteLayout from '@/components/SiteLayout';
-
 const stats = [
   { number: '150+', label: 'Projects Completed', desc: 'Across 15+ cities in India' },
   { number: '12+', label: 'Years of Excellence', desc: 'Since 2012, crafting luxury' },
@@ -58,7 +56,7 @@ export default function AboutPage() {
   const imgParallax = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
   return (
-    <SiteLayout>
+    <>
       {/* ===== HERO ===== */}
       <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
@@ -291,6 +289,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-    </SiteLayout>
+    </>
   );
 }

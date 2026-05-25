@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Playfair_Display, Cormorant_Garamond, Inter } from "next/font/google";
+import SiteLayout from "@/components/SiteLayout";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -47,7 +48,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${cormorant.variable} ${inter.variable} antialiased bg-[#0a0a0a] text-foreground overflow-x-hidden`}
       >
-        {children}
+        <SiteLayout>{children}</SiteLayout>
       </body>
     </html>
   );

@@ -3,8 +3,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import SiteLayout from '@/components/SiteLayout';
-
 const services = [
   {
     id: 'residential',
@@ -83,7 +81,7 @@ export default function ServicesPage() {
   const faqInView = useInView(faqRef, { once: true, margin: '-80px' });
 
   return (
-    <SiteLayout>
+    <>
       {/* ===== HERO ===== */}
       <section ref={heroRef} className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
@@ -309,6 +307,6 @@ export default function ServicesPage() {
           </motion.div>
         </div>
       </section>
-    </SiteLayout>
+    </>
   );
 }
